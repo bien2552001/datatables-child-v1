@@ -1,9 +1,15 @@
-﻿using demo1.entities;
+﻿using demo1.chapter10.Interface;
+using demo1.chapter10.user.ConfigureJWT_Login;
+using demo1.chapter10.user.Identity_Register_Roles;
+using demo1.Chapter3.HealthyCheck;
+using demo1.entities;
 using demo1.Interface;
 using demo1.mongodb;
 using demo1.repository.data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -53,6 +59,50 @@ namespace demo1
             });
 
 
+
+            //---------------------------------Thêm healthycheck_ chương 3________________________
+            services.AddHealthChecks()
+                     .AddCheck("ICMP_01",
+                     new ICMPHealthCheck("www.ryadel.com",
+                     100))
+                     .AddCheck("ICMP_02",
+                     new ICMPHealthCheck("www.google.com",
+                     100))
+                     .AddCheck("ICMP_03",
+                     new ICMPHealthCheck("www.does-not-exist.com",
+                     100));
+
+
+            //------------------------------------- Chương 10 ----------------------------------------------
+
+            // Identity
+            services.ConfigureIdentity();
+
+            // Configure JWT
+            services.ConfigureJWT(Configuration);
+
+            //JWT_Login_Authen
+            services.AddScoped<ILogin_JWT, Login_JWT>();
+
+            // _______________________________________DỊCH VỤ TỪ PACKAGES_____________________________________________________________
+
+
+            // VALIDATION___Model State
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+
+
+            // CHO PHÉP CHỨA HẬU TỐ ASYNC 
+            services.AddControllers(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+
+            });
+
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -86,15 +136,28 @@ namespace demo1
             //CORS
             app.UseCors("CorsPolicy");
 
+            // CHUYỂN TIẾP TIÊU ĐÈ PROXY ĐẾN YÊU CẦU HIỆN TẠI 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+
+            //Identity_Authentication
+            app.UseAuthentication();
+
+
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                // healthycheck chương 3_________________
+                endpoints.MapHealthChecks("/hc", new CustomHealthCheckOptions());
                 endpoints.MapControllers();
             });
         }

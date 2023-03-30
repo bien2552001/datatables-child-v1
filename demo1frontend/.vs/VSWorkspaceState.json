@@ -3,8 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\datatable"
+    "\\src\\app\\chapter10_authen",
+    "\\src\\app\\chapter10_authen\\api-authorization",
+    "\\src\\app\\chapter10_authen\\api-authorization\\api-authorization",
+    "\\src\\app\\chapter10_authen\\api-authorization\\login",
+    "\\src\\app\\chapter10_authen\\api-authorization\\login-menu",
+    "\\src\\app\\chapter10_authen\\api-authorization\\logout",
+    "\\src\\app\\chapter10_authen\\fetch-data"
   ],
-  "SelectedNode": "\\src\\app\\app.component.html",
+  "SelectedNode": "\\src\\app\\chapter10_authen\\api-authorization\\login\\login.component.html",
   "PreviewInSolutionExplorer": false
 }

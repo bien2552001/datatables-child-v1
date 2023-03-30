@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\testdemo1\\backend\\demo1\\demo1.csproj": {}
+    "D:\\datatables-child\\backend\\demo1\\demo1.csproj": {}
   },
   "projects": {
-    "D:\\testdemo1\\backend\\demo1\\demo1.csproj": {
+    "D:\\datatables-child\\backend\\demo1\\demo1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\testdemo1\\backend\\demo1\\demo1.csproj",
+        "projectUniqueName": "D:\\datatables-child\\backend\\demo1\\demo1.csproj",
         "projectName": "demo1",
-        "projectPath": "D:\\testdemo1\\backend\\demo1\\demo1.csproj",
+        "projectPath": "D:\\datatables-child\\backend\\demo1\\demo1.csproj",
         "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-        "outputPath": "D:\\testdemo1\\backend\\demo1\\obj\\",
+        "outputPath": "D:\\datatables-child\\backend\\demo1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,9 +41,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AspNetCore.Identity.MongoDbCore": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",

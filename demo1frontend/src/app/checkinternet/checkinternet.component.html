@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="status" [class.offline]="status === OnlineStatusType.OFFLINE">
+        {{ OnlineStatusType.OFFLINE ? 'Offline' : 'Online' }}
+      </div>
+
+      <div style="text-align:center">
+        <h1>
+          ngx-online-status
+        </h1>
+        <p>
+          Try this package by turning on and off your internet connection
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="nav-item dropdown">
+        <div class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Detail
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="/get">Table</a></li>
+          <li><a class="dropdown-item" href="/check">Check Internet</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

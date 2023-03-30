@@ -1,0 +1,38 @@
+﻿#B1: Cài đặt các gói cần thiết cho authen
++) Cài gói AspNetCore.Identity.MongoDbCore(3.1.2)
+
+
+B2: Tạo lớp Model
+- Bên trong tạo folder UserModel và  2 lớp Role và User
+- Tiếp theo tạo folder userDto và các lớp bên trong nó 
+B2.1: Sử dụng mapping để map các lớp Dto trong Controller 
+
+
+
+
+B3: Tạo lớp User 
+- Bên trong tạo 2 folder ConfigureJwt và IdentityRegisterRole 
+B3.1: Dùng lớp IdentityRegister trước 
++ Tham chiếu đến các lớp Model 
+-  Đăng kí trong Startup : 
++ Phần services : 
+            // Identity
+            services.ConfigureIdentity();
+
+            // Configure JWT
+            services.ConfigureJWT(Configuration);
+
+            //JWT_Login_Authen
+            services.AddScoped<ILogin_JWT, Login_JWT>();
+
++ phần middleware : 
+            //Identity_Authentication
+            app.UseAuthentication();
+
+            ///
+            app.UseAuthorization();
+
+
+////--------------------------Phần angular----------------
+
+B1: Cài gói sau : npm install oidc-client --save
